@@ -1,0 +1,40 @@
+diff -aurN phasex-0.14.97.orig/misc/Makefile.am phasex-0.14.97/misc/Makefile.am
+--- phasex-0.14.97.orig/misc/Makefile.am	2013-02-17 12:59:52.249324593 +0100
++++ phasex-0.14.97/misc/Makefile.am	2013-02-17 13:12:13.366093905 +0100
+@@ -12,7 +12,7 @@
+ 
+ EXTRA_DIST = $(desktop_in_files:.desktop.in=.desktop)
+ 
+-desktop_base = Application AudioVideo Audio
++desktop_base = GTK AudioVideo Audio Midi
+ desktop_extra = X-Jack X-MIDI X-Synthesis X-Digital_Processing
+ 
+ 
+@@ -21,7 +21,7 @@
+ 	$(mkinstalldirs) $(DESTDIR)$(datadir)/applications
+ 	desktop-file-install \
+ 		--dir $(DESTDIR)$(datadir)/applications \
+-		`for c in $(desktop_base) $(desktop_extra); do echo "--add-category $$c "; done` \
++		`for c in $(desktop_base); do echo "--add-category $$c "; done` \
+ 		$(desktop_files)
+ 
+ 
+diff -aurN phasex-0.14.97.orig/misc/phasex.desktop.in phasex-0.14.97/misc/phasex.desktop.in
+--- phasex-0.14.97.orig/misc/phasex.desktop.in	2013-02-17 12:59:52.249324593 +0100
++++ phasex-0.14.97/misc/phasex.desktop.in	2013-02-17 13:05:21.153739672 +0100
+@@ -1,13 +1,12 @@
+ [Desktop Entry]
+ Name=PHASEX
+ Comment=Phase Harmonic Advanced Synthesis EXperiment
+-Icon=@ac_datadir@/phasex/pixmaps/phasex-icon.png
++Icon=phasex
+ Exec=phasex
+ Terminal=false
+ Type=Application
+ 
+ Version=1.0
+ 
+-X-Desktop-File-Install-Version=0.10
++Categories=GTK;AudioVideo;Audio;Midi;
+ 
+-Categories=AudioVideo;Audio;X-MIDI;X-Synthesis;X-JACK;X-Digital_Processing;
